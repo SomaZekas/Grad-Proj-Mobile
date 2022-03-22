@@ -32,10 +32,10 @@ const App: () => Node = () => {
   const [hashedData, setHashedData] = useState('');
 
   const RSAPublicKey = '-----BEGIN PUBLIC KEY-----\n' +
-  'MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgE89AqXX43vjSjBUGPHp2r3uMd2U\n' +
-  '8dzowfWXxMy7E6m/YwicGGYKls9KyGBom4wInuBEQutP5Edgfh3dhZTVRxICt94c\n' +
-  'cP3H+2Ou4E77shHsiIz820s2l151tipEcMLF1+kR4GdESpclTDSHWBSFN04hd52H\n' +
-  'PGL1sBVOPskVfjZJAgMBAAE=\n' +
+  'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtSsoZiarOq3hvzuRH1NdNEMb0\n' +
+  'URX99eMFS0U2sGJeTSLffG7ttpSmhtDAcIosz5CkiCeVSbjp77yB+8BGNzFXmX3Q\n' +
+  '1x6vk3bwELKffvrMv4e2xE52/Bd7wZ6ibXJN/lVwN+P0yogfLotxYaGTNa1JpVrQ\n' +
+  'kCZp18Dl7V6ZM5EliwIDAQAB\n' +
   '-----END PUBLIC KEY-----';
 
   const sendGuestData = () => {
