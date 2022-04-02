@@ -29,7 +29,7 @@ const App: () => Node = () => {
   const [guestName, setGuestName] = useState('');
   const [enteranceDate, setEntranceDate] = useState('');
   const [carId, setCarId] = useState('');
-  const [hashedData, setHashedData] = useState('');
+  //const [hashedData, setHashedData] = useState('');
 
   const RSAPublicKey = '-----BEGIN PUBLIC KEY-----\n' +
   'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtSsoZiarOq3hvzuRH1NdNEMb0\n' +
@@ -38,7 +38,7 @@ const App: () => Node = () => {
   'kCZp18Dl7V6ZM5EliwIDAQAB\n' +
   '-----END PUBLIC KEY-----';
 
-  const sendGuestData = () => {
+  const sendGuestData = (hashed) => {
     fetch('http://192.168.1.27:5000/owners/newguest', {
       method: 'POST',
       headers: {
@@ -51,7 +51,8 @@ const App: () => Node = () => {
           name: guestName,
           date: enteranceDate,
           car_id: carId,
-          hashed: hashedData
+          used: 'false',
+          hashed: hashed
       })
       }).then((response) => response.json()).then((json) => {
       if (json.confirmation == 'success') {
@@ -70,10 +71,10 @@ const App: () => Node = () => {
   const hashStrings = async () => {
     const fullString = guestName + ',' + enteranceDate + ',' + carId;
     const sha256Hash = await RNSimpleCrypto.SHA.sha256(fullString);
-    setHashedData(sha256Hash);
+    //setHashedData(sha256Hash);
     //console.log('\n-------\n' + fullString + '\n' + sha256Hash + '\n-------');
 
-    sendGuestData();
+    //sendGuestData();
 
     //Encrypt using RSA
     const RSAEncryptedMessage = await RNSimpleCrypto.RSA.encrypt(
@@ -82,6 +83,8 @@ const App: () => Node = () => {
     );
     console.log('\n-------\nData: ' + fullString + '\nHash: ' + sha256Hash + '\nRSA Encrypted: ' + RSAEncryptedMessage + '\n-------');
     //console.log("rsa Encrypt:", RSAEncryptedMessage);
+
+    sendGuestData(sha256Hash);
 
 
     //Share QR Code
@@ -92,9 +95,6 @@ const App: () => Node = () => {
      * generates everytime it starts? -> if owner signs in, send once.
      * generated online, saved as a string in server? -> if server reboots (e.g. tech issus), how to automatically?
      * 
-     * Guest
-     * -----
-     * How to associate owner with guest? session id? 
      * 
      */
   }
