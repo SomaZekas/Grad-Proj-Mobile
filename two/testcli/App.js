@@ -51,7 +51,7 @@ const App: () => Node = () => {
           name: guestName,
           date: enteranceDate,
           car_id: carId,
-          used: 'false',
+          used: false,
           hashed: hashed
       })
       }).then((response) => response.json()).then((json) => {
