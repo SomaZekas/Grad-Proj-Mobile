@@ -1,3 +1,6 @@
+/**
+ * https://www.npmjs.com/package/react-native-simple-crypto
+ */
 import React, { useState } from 'react';
 import type { Node } from 'react';
 import RNSimpleCrypto from 'react-native-simple-crypto';
@@ -72,7 +75,6 @@ const App: () => Node = () => {
     const fullString = guestName + ',' + enteranceDate + ',' + carId;
     const sha256Hash = await RNSimpleCrypto.SHA.sha256(fullString);
     //setHashedData(sha256Hash);
-    //console.log('\n-------\n' + fullString + '\n' + sha256Hash + '\n-------');
 
     //sendGuestData();
 
@@ -82,7 +84,6 @@ const App: () => Node = () => {
       RSAPublicKey
     );
     console.log('\n-------\nData: ' + fullString + '\nHash: ' + sha256Hash + '\nRSA Encrypted: ' + RSAEncryptedMessage + '\n-------');
-    //console.log("rsa Encrypt:", RSAEncryptedMessage);
 
     sendGuestData(sha256Hash);
 
