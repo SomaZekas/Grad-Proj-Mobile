@@ -51,6 +51,7 @@ const App: () => Node = () => {
       body: JSON.stringify({
           from: 'Mobile',
           ownerEmail: 'ali@hi.com',
+          ownerPassword: '123',
           name: guestName,
           date: enteranceDate,
           car_id: carId,
